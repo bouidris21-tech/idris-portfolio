@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Idris Visual Works — Presentation Design & Motion Graphics</title>
+<meta name="description" content="Premium presentation design, video editing, and motion graphics by Idris — based in Boufarik, Algeria.">
+
+<link rel="icon" type="image/png" href="93bf9311-7d4a-4307-a77e-b4e409277333.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ─────────────────────────────────────────
+      DESIGN TOKENS
+  ───────────────────────────────────────── */
+  :root {
+    --cream:   #F5F0E8;
+    --charcoal:#1C1C1C;
+    --orange:  #E8622A;
+    --beige:   #D9C9B0;
+    --warm-white: #FAF7F2;
+    --dark-card: #141414;
+    --muted:   #8A8070;
+
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans:  'DM Sans', sans-serif;
+    --arabic:'Noto Naskh Arabic', serif;
+  }
+
+  /* ─────────────────────────────────────────
+      BASE RESET
+  ───────────────────────────────────────── */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+  }
+  body {
+    background-color: var(--cream);
+    color: var(--charcoal);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    padding: 0 1.5rem;
+  }
+
+  /* ── MULTI-LINGUAL HIDERS ── */
+  html[lang="en"] .ar { display: none !important; }
+  html[lang="ar"] .en { display: none !important; }
+  html[lang="ar"] { font-family: var(--arabic); }
+
+  /* ─────────────────────────────────────────
+      TYPOGRAPHY & STRUCTURE
+  ───────────────────────────────────────── */
+  section {
+    max-width: 1200px;
+    margin: 6rem auto;
+    position: relative;
+  }
+  .section-tag {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  html[lang="ar"] .section-tag {
+    letter-spacing: 0;
+  }
+  .section-tag::before {
+    content: '';
+    width: 12px;
+    height: 1px;
+    background: var(--muted);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 3.5rem;
+  }
+  html[lang="ar"] .section-title {
+    font-family: var(--arabic);
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  /* ─────────────────────────────────────────
+      HEADER & NAV
+  ───────────────────────────────────────── */
+  header.global-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+  .logo-block {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: var(--charcoal);
+  }
+  html[lang="ar"] .logo-block {
+    font-family: var(--arabic);
+  }
+  .lang-switcher {
+    display: flex;
+    background: rgba(0,0,0,.04);
+    padding: .25rem;
+    border-radius: 20px;
+  }
+  .lang-btn {
+    border: none;
+    background: none;
+    padding: .4rem .9rem;
+    font-size: .75rem;
+    font-weight: 500;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all .2s ease;
+    color: var(--muted);
+  }
+  .lang-btn.active {
+    background: #fff;
+    color: var(--charcoal);
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  }
+
+  /* ─────────────────────────────────────────
+      HERO SECTION
+  ───────────────────────────────────────── */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 4rem;
+  }
+  .hero-h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    margin-bottom: 2rem;
+  }
+  html[lang="ar"] .hero-h1 {
+    font-family: var(--arabic);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+  .hero-p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #4A4A4A;
+    max-width: 480px;
+    margin-bottom: 3rem;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: .85rem;
+    font-weight: 500;
+    letter-spacing: .5px;
+    transition: transform .3s cubic-bezier(.16,1,.3,1), background .2s;
+  }
+  html[lang="ar"] .cta-btn {
+    letter-spacing: 0;
+  }
+  .btn-charcoal {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+  .btn-charcoal:hover {
+    transform: translateY(-2px);
+    background: #2d2d2d;
+  }
+  .btn-orange {
+    background: var(--orange);
+    color: #fff;
+  }
+  .btn-orange:hover {
+    transform: translateY(-2px);
+    background: #f06b35;
+  }
+  .hero-asset-frame {
+    background: #FFFFFF;
+    height: 520px;
+    border-radius: 40px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .hero-image {
+    width: 90%;
+    height: auto;
+    max-height: 90%;
+    object-fit: contain;
+  }
+
+  /* ─────────────────────────────────────────
+      VIDEO REELS GRID & SAMPLES
+  ───────────────────────────────────────── */
+  .reels-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .reel-card {
+    position: relative;
+    height: 540px;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 20px 40px rgba(0,0,0,.04);
+    transition: transform .4s cubic-bezier(.16,1,.3,1);
+  }
+  .reel-card:hover {
+    transform: translateY(-6px);
+  }
+  .reel-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .reel-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,.75) 100%);
+    pointer-events: none;
+  }
+  .reel-number {
+    position: absolute;
+    top: 1.2rem;
+    font-size: .75rem;
+    color: rgba(255,255,255,.6);
+    background: rgba(0,0,0,.2);
+    padding: .3rem .6rem;
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+  }
+  html[lang="en"] .reel-number { left: 1.2rem; }
+  html[lang="ar"] .reel-number { right: 1.2rem; }
+
+  .unmute-btn {
+    position: absolute;
+    top: 1.2rem;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.2);
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: background .2s, transform .2s;
+    z-index: 10;
+  }
+  html[lang="en"] .unmute-btn { right: 1.2rem; }
+  html[lang="ar"] .unmute-btn { left: 1.2rem; }
+
+  .unmute-btn:hover {
+    background: rgba(255,255,255,.3);
+    transform: scale(1.05);
+  }
+  .reel-label {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    color: #fff;
+    z-index: 5;
+  }
+  .reel-title {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    margin-bottom: .3rem;
+    font-weight: 400;
+  }
+  html[lang="ar"] .reel-title { font-family: var(--arabic); font-weight: 600; }
+  
+  .reel-cat {
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,.6);
+  }
+  html[lang="ar"] .reel-cat { letter-spacing: 0; }
+
+  /* ─────────────────────────────────────────
+      ABOUT & STATS
+  ───────────────────────────────────────── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-heading {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+  }
+  html[lang="ar"] .about-heading { font-family: var(--arabic); font-weight: 600; line-height: 1.4; }
+  
+  .about-visual {
+    background: #EFEAE2;
+    height: 440px;
+    border-radius: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .abstract-canvas {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .geo-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: .4;
+  }
+  .shape1 { width: 200px; height: 200px; background: var(--orange); top: 20%; left: 20%; }
+  .shape2 { width: 250px; height: 250px; background: var(--beige); bottom: 10%; right: 15%; }
+
+  /* ─────────────────────────────────────────
+      SCROLL ANIMATION ENGINE
+  ───────────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─────────────────────────────────────────
+      RESPONSIVE
+  ───────────────────────────────────────── */
+  @media(max-width:1024px) {
+    .reels-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media(max-width:768px) {
+    .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-asset-frame { height: 380px; }
+    .reels-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .reel-card { height: 500px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="global-nav">
+  <a href="#" class="logo-block">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8622A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;">
+      <path d="M3 21V3h6v18H3zM9 17h6V7H9v10zM15 21h6V11h-6v10z"/>
+    </svg>
+    <span>Idris Studio</span>
+  </a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" id="btn-en">EN</button>
+    <button class="lang-btn" id="btn-ar">عربي</button>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="hero-grid">
+    <div class="hero-content reveal visible">
+      <div class="section-tag">
+        <span class="en">Freelance Designer & Editor</span>
+        <span class="ar">مصمم ومونتير مستقل</span>
+      </div>
+      <h1 class="hero-h1">
+        <span class="en">High-end presentations & motion design.</span>
+        <span class="ar">تصميم عروض متحركة وموشن جرافيك فاخرة.</span>
+      </h1>
+      <p class="hero-p">
+        <span class="en">Crafting corporate PowerPoint structures and immersive real estate video productions with cinematic aesthetic. Based in Boufarik.</span>
+        <span class="ar">صناعة عروض الباوربوينت للشركات وإنتاجات الفيديو العقارية الغامرة بلمسة سينمائية. بوفاريك، الجزائر.</span>
+      </p>
+      <a href="https://wa.me/213698262595?text=Hi%20Idris,%20I'm%20interested%20in%20your%20video%20editing/design%20services!" target="_blank" class="cta-btn btn-charcoal">
+        <span class="en">Initiate Project (WhatsApp)</span>
+        <span class="ar">ابدأ مشروعك الآن (واتساب)</span>
+      </a>
+    </div>
+    
+    <div class="hero-asset-frame reveal visible" style="transition-delay:.15s">
+      <img src="93bf9311-7d4a-4307-a77e-b4e409277333.png" alt="Idris Visual Works Logo" class="hero-image">
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="section-header reveal visible">
+    <div>
+      <div class="section-tag">
+        <span class="en">02 — Portfolio</span>
+        <span class="ar">٠٢ — الأعمال</span>
+      </div>
+      <h2 class="section-title">
+        <span class="en">Selected Works &<br>Video Reels</span>
+        <span class="ar">أعمال مختارة<br>وريلز الفيديو</span>
+      </h2>
+    </div>
+  </div>
+
+  <div class="reels-grid reveal visible" style="transition-delay:.1s">
+    
+    <div class="reel-card" id="reel1">
+      <video id="vid1" autoplay muted loop playsinline src="Real Estate - Land Footage.mp4"></video>
+      <div class="reel-overlay"></div>
+      <div class="reel-number">01 / 04</div>
+      <button class="unmute-btn" onclick="toggleMute('vid1', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      </button>
+      <div class="reel-label">
+        <div class="reel-title en">Real Estate Showcase</div>
+        <div class="reel-title ar">عرض عقاري سينمائي</div>
+        <div class="reel-cat en">Aerial · Drone</div>
+        <div class="reel-cat ar">جوي · درون</div>
+      </div>
+    </div>
+
+    <div class="reel-card" id="reel4" style="border: 1px solid var(--orange);">
+      <video id="vid4" autoplay muted loop playsinline src="final12.mp4"></video>
+      <div class="reel-overlay"></div>
+      <div class="reel-number">02 / 04</div>
+      <button class="unmute-btn" onclick="toggleMute('vid4', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      </button>
+      <div class="reel-label">
+        <div class="reel-title en">Minimalist Explainer</div>
+        <div class="reel-title ar">فيديو تعليمي مبسط</div>
+        <div class="reel-cat en">Productivity · AI</div>
+        <div class="reel-cat ar">إنتاجية · ذكاء اصطناعي</div>
+      </div>
+    </div>
+
+    <div class="reel-card" id="reel2">
+      <video id="vid2" autoplay muted loop playsinline src="rewl022.mp4"></video>
+      <div class="reel-overlay"></div>
+      <div class="reel-number">03 / 04</div>
+      <button class="unmute-btn" onclick="toggleMute('vid2', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      </button>
+      <div class="reel-label">
+        <div class="reel-title en">Motion Graphics</div>
+        <div class="reel-title ar">موشن جرافيك</div>
+        <div class="reel-cat en">Animation · Visual</div>
+        <div class="reel-cat ar">أنيميشن · بصري</div>
+      </div>
+    </div>
+
+    <div class="reel-card" id="reel3">
+      <video id="vid3" autoplay muted loop playsinline src="0602.mp4"></video>
+      <div class="reel-overlay"></div>
+      <div class="reel-number">04 / 04</div>
+      <button class="unmute-btn" onclick="toggleMute('vid3', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      </button>
+      <div class="reel-label">
+        <div class="reel-title en">Brand Storytelling</div>
+        <div class="reel-title ar">سرد قصة البراند</div>
+        <div class="reel-cat en">Commercial · Brand</div>
+        <div class="reel-cat ar">إعلاني · هوية</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal visible" style="transition-delay:.15s; margin-top: 4rem;">
+    <div style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
+      <span class="en" style="font-family: var(--serif); font-size: 1.8rem; color: #4a453e;">Visual Samples</span>
+      <span class="ar" style="font-family: var(--arabic); font-size: 1.6rem; color: #4a453e;">نماذج بصرية</span>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+      <div style="position: relative; height: 380px; border-radius: 24px; overflow: hidden; background: #141414;">
+        <video autoplay muted loop playsinline src="0602.mp4" style="width: 100%; height: 100%; object-fit: cover;"></video>
+      </div>
+      <div style="position: relative; height: 380px; border-radius: 24px; overflow: hidden; background: #141414; border: 1px solid var(--orange);">
+        <video autoplay muted loop playsinline src="final12.mp4" style="width: 100%; height: 100%; object-fit: cover;"></video>
+      </div>
+      <div style="position: relative; height: 380px; border-radius: 24px; overflow: hidden; background: #141414;">
+        <video autoplay muted loop playsinline src="rewl022.mp4" style="width: 100%; height: 100%; object-fit: cover;"></video>
+      </div>
+      <div style="position: relative; height: 380px; border-radius: 24px; overflow: hidden; background: #141414;">
+        <video autoplay muted loop playsinline src="Real Estate - Land Footage.mp4" style="width: 100%; height: 100%; object-fit: cover;"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <div class="section-tag">
+        <span class="en">03 — About Me</span>
+        <span class="ar">٠٣ — من أنا</span>
+      </div>
+      <h2 class="about-heading">
+        <span class="en">Crafting high-converting Reels, UGC, and minimalist educational/property visual edits.</span>
+        <span class="ar">صناعة ريلز احترافية، محتوى UGC، ومونتاج تعليمي وعقاري مبسط يضمن أعلى تفاعل.</span>
+      </h2>
+      
+      <div class="en" style="max-width:540px; line-height:1.8; margin-bottom:2rem; color:#4A4A4A; font-size:1rem;">
+        <p style="margin-bottom: 1rem;">
+          Hi, I'm <strong>Idris</strong>, a specialized video editor and presentation designer based in <strong>Boufarik, Algeria</strong>. I focus on creating high-impact visual content tailored for modern social media and corporate growth.
+        </p>
+        <p style="margin-bottom: 1rem;">
+          My expertise includes editing engaging <strong>Instagram/TikTok Reels</strong>, crafting authentic <strong>UGC (User Generated Content)</strong>, and delivering top-tier <strong>Minimalist Explainers</strong> and <strong>Talking Head</strong> edits enhanced with cutting-edge <strong>AI tools</strong> to keep viewers hooked.
+        </p>
+        <p>
+          Additionally, I provide cinematic <strong>Real Estate video editing</strong> and premium corporate PowerPoint structures, bridging the gap between artistic storytelling and conversion-driven results.
+        </p>
+      </div>
+
+      <div class="ar" style="max-width:540px; line-height:1.8; margin-bottom:2rem; color:#4A4A4A; font-size:1rem;">
+        <p style="margin-bottom: 1rem;">
+          مرحباً، أنا <strong>إدريس</strong>، مصمم ومونتير فيديو مستقل مستقر في <strong>بوفاريك، الجزائر</strong>. أركز على صناعة محتوى بصري قوي وموجه لمواكبة متطلبات السوق والشركات الحديثة.
+        </p>
+        <p style="margin-bottom: 1rem;">
+          تخصصي الدقيق يشمل صناعة ومونتاج مقاطع <strong>Reels و TikTok</strong> سريعة الانتشار، صياغة الفيديوهات التعليمية والتعريفية المبسطة <strong>(Minimalist Explainers)</strong>، ومحتوى <strong>UGC</strong> مدعوم بتقنيات <strong>الذكاء الاصطناعي (AI)</strong> بأسلوب ديناميكي يحافظ على تفاعل المشاهد.
+        </p>
+        <p>
+          إلى جانب ذلك، أتميز في <strong>المونتاج العقاري السينمائي</strong> وتصميم عروض الـ PowerPoint الاحترافية للشركات، لترجمة الأفكار المعقدة إلى نتائج بصرية تزيد من مبيعاتك وتبرز براندك.
+        </p>
+      </div>
+
+      <div style="display:flex; gap:2.5rem; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 1.5rem;">
+        <div>
+          <div style="font-size:1.8rem; font-family:var(--serif); font-weight:600; color:var(--orange)">100%</div>
+          <div style="font-size:.75rem; font-weight:500; opacity:.7; margin-top:.2rem;" class="en">On-Time Delivery</div>
+          <div style="font-size:.75rem; font-weight:600; opacity:.7; margin-top:.2rem;" class="ar">التزام تام بالوقت</div>
+        </div>
+        <div>
+          <div style="font-size:1.8rem; font-family:var(--serif); font-weight:600; color:var(--orange)">Premium</div>
+          <div style="font-size:.75rem; font-weight:500; opacity:.7; margin-top:.2rem;" class="en">Attention to Detail</div>
+          <div style="font-size:.75rem; font-weight:600; opacity:.7; margin-top:.2rem;" class="ar">دقة متناهية في التفاصيل</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="about-visual">
+      <div class="abstract-canvas">
+        <div class="geo-shape shape1"></div>
+        <div class="geo-shape shape2"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:var(--dark-card);color:var(--warm-white);border-radius:32px;margin:4rem 2rem;padding:5rem 3rem;text-align:center">
+  <div class="reveal" style="max-width:600px;margin:0 auto">
+    <div class="section-tag" style="color:var(--orange);justify-content:center">
+      <span class="en">04 — Get In Touch</span>
+      <span class="ar">٠٤ — تواصل معي</span>
+    </div>
+    <h2 style="font-size:2.5rem;margin:1.5rem 0;font-weight:400">
+      <span class="en">Let's build something exceptional.</span>
+      <span class="ar">لنصنع شيئاً استثنائياً معاً.</span>
+    </h2>
+    <a href="mailto:bouidris21@gmail.com?subject=Inquiry%20about%20Design/Video%20Services" class="cta-btn btn-orange">
+      <span class="en">Send an Email</span>
+      <span class="ar">أرسل رسالة إلكترونية</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem">
+    <div style="display:flex;align-items:center;gap:.75rem">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8622A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21V3h6v18H3zM9 17h6V7H9v10zM15 21h6V11h-6v10z"/>
+      </svg>
+      <span style="font-family:var(--serif);font-weight:600">Idris Visuals</span>
+    </div>
+    <div style="font-size:.8rem;opacity:.5" class="en">&copy; 2026 Idris. All rights reserved.</div>
+    <div style="font-size:.8rem;opacity:.5" class="ar">&copy; ٢٠٢٦ إدريس. جميع الحقوق محفوظة.</div>
+  </div>
+</footer>
+
+<script>
+// LANGUAGE SWITCHER
+const btnEn = document.getElementById('btn-en');
+const btnAr = document.getElementById('btn-ar');
+btnEn.addEventListener('click', () => setLang('en'));
+btnAr.addEventListener('click', () => setLang('ar'));
+
+function setLang(lang){
+  if(lang === 'ar'){
+    document.documentElement.dir = 'rtl';
+    document.documentElement.lang = 'ar';
+    btnAr.classList.add('active');
+    btnEn.classList.remove('active');
+  } else {
+    document.documentElement.dir = 'ltr';
+    document.documentElement.lang = 'en';
+    btnEn.classList.add('active');
+    btnAr.classList.remove('active');
+  }
+}
+
+// REVEAL ON SCROLL
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }});
+},{threshold:.12});
+reveals.forEach(el=>io.observe(el));
+
+// VIDEO MUTE TOGGLE
+const muteIcon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg> `;
+const unmuteIcon = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg> `;
+
+function toggleMute(vidId, btn){
+  const vid = document.getElementById(vidId);
+  if(!vid) return;
+  vid.muted = !vid.muted;
+  btn.innerHTML = vid.muted ? muteIcon : unmuteIcon;
+}
+</script>
+</body>
+</html>

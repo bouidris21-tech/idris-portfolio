@@ -220,7 +220,7 @@
   }
 
   /* ─────────────────────────────────────────
-      VIDEO REELS GRID & SAMPLES
+      VIDEO REELS GRID
   ───────────────────────────────────────── */
   .reels-grid {
     display: grid;
@@ -313,16 +313,55 @@
   }
   html[lang="ar"] .reel-cat { letter-spacing: 0; }
 
-  /* ── FILTER ENGINE STYLING ── */
+  /* ─────────────────────────────────────────
+      VISUAL SAMPLES (TRUE REELS 9:16 SIZES & DESCRIPTIONS)
+  ───────────────────────────────────────── */
+  .samples-flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  .sample-container {
+    display: flex;
+    flex-direction: column;
+    width: 270px; /* عرض مثالي متناسق */
+    transition: all 0.5s ease;
+  }
   .sample-item {
     position: relative;
-    height: 380px;
+    height: 480px; /* طول متناسق مع أبعاد 9:16 الحقيقية للريلز */
     border-radius: 24px;
     overflow: hidden;
     background: #141414;
-    transition: all 0.5s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
   }
-  .sample-item.hidden {
+  .sample-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .sample-meta {
+    margin-top: 1rem;
+    padding: 0 .2rem;
+  }
+  .sample-meta-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 0.2rem;
+  }
+  html[lang="ar"] .sample-meta-title { font-family: var(--arabic); font-size: 1rem; }
+  
+  .sample-meta-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  html[lang="ar"] .sample-meta-desc { line-height: 1.5; }
+
+  .sample-container.hidden {
     opacity: 0;
     transform: scale(0.85);
     display: none !important;
@@ -467,28 +506,31 @@
     </div>
   </div>
 
+  <!-- الكروت العلوية الأربعة الأساسية -->
   <div class="reels-grid reveal visible" style="transition-delay:.1s">
     
-    <div class="reel-card" id="reel1" onclick="filterSelection('real-estate')">
-      <video id="vid1" autoplay muted loop playsinline src="Real Estate - Land Footage.mp4"></video>
+    <!-- فرع عقاري يجمع الفيديوهات العقارية في حلقة تتابعية -->
+    <div class="reel-card" id="reel-real-estate" onclick="filterSelection('real-estate')" style="border: 1px solid var(--orange);">
+      <video id="vid-real-estate" autoplay muted playsinline src="Real Estate - Land Footage.mp4"></video>
       <div class="reel-overlay"></div>
-      <div class="reel-number">01 / 04</div>
-      <button class="unmute-btn" onclick="event.stopPropagation(); toggleMute('vid1', this)">
+      <div class="reel-number">01 / 03</div>
+      <button class="unmute-btn" onclick="event.stopPropagation(); toggleMute('vid-real-estate', this)">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
       </button>
       <div class="reel-label">
         <div class="reel-title en">Real Estate Showcase</div>
-        <div class="reel-title ar">عرض عقاري سينمائي</div>
-        <div class="reel-cat en">Aerial · Drone</div>
-        <div class="reel-cat ar">جوي · درون</div>
+        <div class="reel-title ar">عرض عقاري ومعماري</div>
+        <div class="reel-cat en">Drone · 3D Track</div>
+        <div class="reel-cat ar">جوي · تتبع ثلاثي الأبعاد</div>
       </div>
     </div>
 
-    <div class="reel-card" id="reel4" style="border: 1px solid var(--orange);" onclick="filterSelection('explainer')">
-      <video id="vid4" autoplay muted loop playsinline src="final12.mp4"></video>
+    <!-- فرع المينيماليست المحدث -->
+    <div class="reel-card" id="reel-explainer" onclick="filterSelection('explainer')">
+      <video id="vid-explainer" autoplay muted playsinline src="final12.mp4"></video>
       <div class="reel-overlay"></div>
-      <div class="reel-number">02 / 04</div>
-      <button class="unmute-btn" onclick="event.stopPropagation(); toggleMute('vid4', this)">
+      <div class="reel-number">02 / 03</div>
+      <button class="unmute-btn" onclick="event.stopPropagation(); toggleMute('vid-explainer', this)">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
       </button>
       <div class="reel-label">
@@ -499,26 +541,12 @@
       </div>
     </div>
 
-    <div class="reel-card" id="reel2" onclick="filterSelection('motion')">
-      <video id="vid2" autoplay muted loop playsinline src="rewl022.mp4"></video>
+    <!-- فرع السرد القصصي -->
+    <div class="reel-card" id="reel-storytelling" onclick="filterSelection('storytelling')">
+      <video id="vid-storytelling" autoplay muted playsinline src="0602.mp4"></video>
       <div class="reel-overlay"></div>
-      <div class="reel-number">03 / 04</div>
-      <button class="unmute-btn" onclick="event.stopPropagation(); toggleMute('vid2', this)">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-      </button>
-      <div class="reel-label">
-        <div class="reel-title en">Motion Graphics</div>
-        <div class="reel-title ar">موشن جرافيك</div>
-        <div class="reel-cat en">Animation · Visual</div>
-        <div class="reel-cat ar">أنيميشن · بصري</div>
-      </div>
-    </div>
-
-    <div class="reel-card" id="reel3" onclick="filterSelection('storytelling')">
-      <video id="vid3" autoplay muted loop playsinline src="0602.mp4"></video>
-      <div class="reel-overlay"></div>
-      <div class="reel-number">04 / 04</div>
-      <button class="unmute-btn" onclick="event.stopPropagation(); toggleMute('vid3', this)">
+      <div class="reel-number">03 / 03</div>
+      <button class="unmute-btn" onclick="event.stopPropagation(); toggleMute('vid-storytelling', this)">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
       </button>
       <div class="reel-label">
@@ -530,11 +558,12 @@
     </div>
   </div>
 
+  <!-- قسم الـ Visual Samples المحدث بالقياسات الحقيقية والأوصاف -->
   <div id="visual-samples-section" class="reveal visible" style="transition-delay:.15s; margin-top: 4rem;">
-    <div style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
+    <div style="margin-bottom: 2.5rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
       <div>
-        <span class="en" style="font-family: var(--serif); font-size: 1.8rem; color: #4a453e;">Visual Samples</span>
-        <span class="ar" style="font-family: var(--arabic); font-size: 1.6rem; color: #4a453e;">نماذج بصرية</span>
+        <span class="en" style="font-family: var(--serif); font-size: 1.8rem; color: #4a453e;">Visual Samples (9:16 Reels)</span>
+        <span class="ar" style="font-family: var(--arabic); font-size: 1.6rem; color: #4a453e;">نماذج بصرية (مقاسات ريلز حقيقية)</span>
         <span id="active-category-tag" style="margin-left: 10px; font-size: 0.85rem; color: var(--orange); font-weight: bold;"></span>
       </div>
       <button id="reset-filter" class="reset-filter-btn" onclick="filterSelection('all')">
@@ -543,23 +572,78 @@
       </button>
     </div>
     
-    <!-- تم إضافة الفيديو الجديد 0222.mp4 وتوجيهه لفرع الـ Explainer مع ضبط أحجام العناصر تلقائياً -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
-      <div class="sample-item" data-category="storytelling">
-        <video autoplay muted loop playsinline src="0602.mp4" style="width: 100%; height: 100%; object-fit: cover;"></video>
+    <div class="samples-flex-wrapper">
+      
+      <!-- فيديو عقاري 1 -->
+      <div class="sample-container" data-category="real-estate">
+        <div class="sample-item">
+          <video autoplay muted loop playsinline src="Real Estate - Land Footage.mp4"></video>
+        </div>
+        <div class="sample-meta">
+          <div class="sample-meta-title"><span class="en">Drone Overlay</span><span class="ar">تتبع المسح الجوي</span></div>
+          <div class="sample-meta-desc">
+            <span class="en">Cinematic drone photography integrated with engineering 3D graphics.</span>
+            <span class="ar">دمج لقطات الدرون السينمائية مع المخططات الهندسية ثلاثية الأبعاد بدقة.</span>
+          </div>
+        </div>
       </div>
-      <div class="sample-item" data-category="explainer" style="border: 1px solid var(--orange);">
-        <video autoplay muted loop playsinline src="final12.mp4" style="width: 100%; height: 100%; object-fit: cover;"></video>
+
+      <!-- فيديو عقاري 2 (الموشن المعماري المدمج هنا) -->
+      <div class="sample-container" data-category="real-estate">
+        <div class="sample-item">
+          <video autoplay muted loop playsinline src="rewl022.mp4"></video>
+        </div>
+        <div class="sample-meta">
+          <div class="sample-meta-title"><span class="en">Architectural Motion</span><span class="ar">موشن جرافيك معماري</span></div>
+          <div class="sample-meta-desc">
+            <span class="en">High-end dynamic framing highlighting construction assets and urban detail.</span>
+            <span class="ar">تحريك ديناميكي متطور يبرز التفاصيل الهندسية للأبنية والمنشآت العقارية.</span>
+          </div>
+        </div>
       </div>
-      <div class="sample-item" data-category="explainer">
-        <video autoplay muted loop playsinline src="0222.mp4" style="width: 100%; height: 100%; object-fit: cover;"></video>
+
+      <!-- فيديو مينيماليست 1 -->
+      <div class="sample-container" data-category="explainer">
+        <div class="sample-item">
+          <video autoplay muted loop playsinline src="final12.mp4"></video>
+        </div>
+        <div class="sample-meta">
+          <div class="sample-meta-title"><span class="en">Minimalist Explainer v1</span><span class="ar">شرح مبسط - نسخة 1</span></div>
+          <div class="sample-meta-desc">
+            <span class="en">Clean typography layout optimized for rapid knowledge absorption and AI niches.</span>
+            <span class="ar">تنسيق نصوص منظم ومبسط مخصص للمحتوى التعليمي السريع ومجالات الذكاء الاصطناعي.</span>
+          </div>
+        </div>
       </div>
-      <div class="sample-item" data-category="motion">
-        <video autoplay muted loop playsinline src="rewl022.mp4" style="width: 100%; height: 100%; object-fit: cover;"></video>
+
+      <!-- فيديو مينيماليست 2 الجديد 0222 -->
+      <div class="sample-container" data-category="explainer">
+        <div class="sample-item">
+          <video autoplay muted loop playsinline src="0222.mp4"></video>
+        </div>
+        <div class="sample-meta">
+          <div class="sample-meta-title"><span class="en">Minimalist Explainer 0222</span><span class="ar">شرح مبسط - كود 0222</span></div>
+          <div class="sample-meta-desc">
+            <span class="en">Dynamic kinetic typography combined with powerful audio-visual hooks.</span>
+            <span class="ar">تحريك نصوص سينمائي متكامل مع مؤثرات بصرية مخصصة لشد الانتباه.</span>
+          </div>
+        </div>
       </div>
-      <div class="sample-item" data-category="real-estate">
-        <video autoplay muted loop playsinline src="Real Estate - Land Footage.mp4" style="width: 100%; height: 100%; object-fit: cover;"></video>
+
+      <!-- فيديو براند وسرد قصصي -->
+      <div class="sample-container" data-category="storytelling">
+        <div class="sample-item">
+          <video autoplay muted loop playsinline src="0602.mp4"></video>
+        </div>
+        <div class="sample-meta">
+          <div class="sample-meta-title"><span class="en">Brand Storytelling Showcase</span><span class="ar">سرد قصة الهوية التجارية</span></div>
+          <div class="sample-meta-desc">
+            <span class="en">Premium narrative structure focusing on commercial conversion and product aesthetic.</span>
+            <span class="ar">أسلوب روائي فاخر يركز على إبراز جمالية المنتجات وزيادة المبيعات.</span>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -692,9 +776,61 @@ function toggleMute(vidId, btn){
   btn.innerHTML = vid.muted ? muteIcon : unmuteIcon;
 }
 
-// FILTER AND SMOOTH SCROLL ENGINE
+/* ────────────────────────────────────────────────────────
+    DYNAMIC PLAYLIST LOOP ENGINE FOR MAIN REEL CARDS
+──────────────────────────────────────────────────────── */
+// مصفوفة تحتوي على مسارات الفيديوهات لكل فرع عند انتهائه
+const playlists = {
+  'real-estate': [
+    'Real Estate - Land Footage.mp4',
+    'rewl022.mp4'
+  ],
+  'explainer': [
+    'final12.mp4',
+    '0222.mp4'
+  ],
+  'storytelling': [
+    '0602.mp4'
+  ]
+};
+
+// تتبع الفهرس الحالي لكل قائمة تشغيل
+const playlistIndices = {
+  'real-estate': 0,
+  'explainer': 0,
+  'storytelling': 0
+};
+
+function setupPlaylistEngine(branchId, videoElementId) {
+  const videoEl = document.getElementById(videoElementId);
+  if (!videoEl) return;
+
+  videoEl.addEventListener('ended', function() {
+    const branchTracks = playlists[branchId];
+    if (branchTracks.length <= 1) {
+      videoEl.play(); // إذا كان هناك فيديو واحد فقط، قم بإعادة تشغيله في حلقة مغلقة
+      return;
+    }
+    
+    // الانتقال للفيديو التالي
+    playlistIndices[branchId] = (playlistIndices[branchId] + 1) % branchTracks.length;
+    videoEl.src = branchTracks[playlistIndices[branchId]];
+    videoEl.play();
+  });
+}
+
+// تشغيل المحرك للفروع عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+  setupPlaylistEngine('real-estate', 'vid-real-estate');
+  setupPlaylistEngine('explainer', 'vid-explainer');
+  setupPlaylistEngine('storytelling', 'vid-storytelling');
+});
+
+/* ────────────────────────────────────────────────────────
+    FILTER ENGINE FOR VISUAL SAMPLES
+──────────────────────────────────────────────────────── */
 function filterSelection(category) {
-  const items = document.querySelectorAll('.sample-item');
+  const items = document.querySelectorAll('.sample-container');
   const resetButton = document.getElementById('reset-filter');
   const targetSection = document.getElementById('visual-samples-section');
 
